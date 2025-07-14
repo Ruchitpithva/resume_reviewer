@@ -18,6 +18,4 @@ app.use("/", (req, res) => {
     return res.status(200).send({ message: "Welcome to resume review using lanchain & gemini key." });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+export default app;
