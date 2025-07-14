@@ -15,13 +15,13 @@ const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const path = dir_name + "/uploads/";
     fs.mkdirSync(path, { recursive: true });
-    const newPath = dir_name + "/uploads/.tmp/";
+    const newPath = dir_name + "/uploads/tmp/";
     fs.mkdirSync(newPath, { recursive: true });
     return cb(null, newPath);
   },
 
   filename: async (req, file, cb) => {
-    const newPath = dir_name + "/uploads/.tmp/";
+    const newPath = dir_name + "/uploads/tmp/";
     var ext = await mime2ext(file.mimetype);
     var time = Date.parse(new Date()) / 1000;
     var name = file?.originalname.split(".");
@@ -59,7 +59,7 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = async (req, file, cb) => {
-  const newPath = dir_name + "/uploads/.tmp/";
+  const newPath = dir_name + "/uploads/tmp/";
   var ext = await mime2ext(file.mimetype);
   var time = Date.parse(new Date()) / 1000;
   var file_name = time + "-" + Math.round(Math.random() * 1e9) + "." + ext;
